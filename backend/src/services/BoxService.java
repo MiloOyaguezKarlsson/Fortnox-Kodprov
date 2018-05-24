@@ -4,6 +4,7 @@ import managers.BoxManager;
 
 import javax.ejb.EJB;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.ws.rs.*;
@@ -20,21 +21,29 @@ public class BoxService {
     @Path("/listboxes")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBoxes(){
-        return Response.ok().build();
+        JsonArray listBoxes = boxManager.listBoxes();
+
+        return Response.ok(listBoxes).build();
     }
 
     @POST
     @Path("/addbox")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response postBox(String body){
+        // read the body
         JsonReader reader = Json.createReader(new StringReader(body));
         JsonObject boxToAdd = reader.readObject();
+
+        // get values
         String reciever = boxToAdd.getString("reciever");
         double weight = Double.parseDouble(boxToAdd.getString("weight"));
         String color = boxToAdd.getString("color");
         String destination = boxToAdd.getString("destination");
+
+        // post to db and get responsecode
         int response = boxManager.postBox(reciever, weight, color, destination);
 
+        // return response with statuscode and posted box
         return Response.status(response).entity(body).build();
     }
 }
