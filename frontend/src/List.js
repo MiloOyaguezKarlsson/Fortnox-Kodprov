@@ -22,10 +22,10 @@ class List extends Component {
     render() {
         const rows = this.state.boxes.map((item, i) => (
             <tr key={i}>
-                <th>{item.reciever}</th>
-                <th>{item.weight} kg</th>
-                <th style={{backgroundColor: item.color}}></th>
-                <th>{item.cost} SEK</th>
+                <td>{item.reciever}</td>
+                <td>{item.weight} kg</td>
+                <td style={{backgroundColor: item.color}}></td>
+                <td>{item.cost} SEK</td>
             </tr>
         ));
 

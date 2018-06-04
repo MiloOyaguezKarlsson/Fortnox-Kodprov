@@ -5,6 +5,7 @@ class Header extends Component{
     render(){
         return (
             <header>
+                <h1>Boxinator</h1>
                 <nav>
                     <ul>
                         <li><Link to='/addbox'>Add box</Link></li>

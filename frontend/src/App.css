@@ -2,7 +2,6 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 50%;
-  margin: 100px;
 }
 
 td, th {
@@ -10,13 +9,33 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
+th {
+  background-color: #878787;
+}
+
+#main{
+  width: 70%;
+  margin: 100px;
+}
+
 .container {
   width: 300px;
   clear: both;
-  margin: 100px;
 }
 
 .container input, .container select {
   width: 100%;
   clear: both;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul {
+  padding: 0;
 }

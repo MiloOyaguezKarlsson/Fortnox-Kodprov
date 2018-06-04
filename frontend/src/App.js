@@ -6,7 +6,7 @@ import RouterOutput from "./RouterOutput";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div id="main">
         <Header/>
         <RouterOutput/>
       </div>
