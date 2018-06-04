@@ -14,7 +14,9 @@ public class RESTConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
+
         resources.add(services.BoxService.class);
+        resources.add(utilities.CORSFilter.class);
     }
 
 }

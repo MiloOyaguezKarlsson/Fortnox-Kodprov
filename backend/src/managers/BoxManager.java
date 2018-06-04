@@ -13,6 +13,16 @@ import java.text.DecimalFormat;
 
 @Stateless
 public class BoxManager {
+    private String database_server;
+
+    public BoxManager(){
+        this.database_server = "kodtest-fortnox";
+    }
+
+    public void setDatabase_server(String database_server){
+        this.database_server = database_server;
+    }
+
     /**
      * Method to post a box to the db
      * @param name string, name om the reciever
@@ -25,7 +35,7 @@ public class BoxManager {
         Connection connection = null;
         try {
             // make connection and prepare statement
-            connection = DBConnector.connect();
+            connection = DBConnector.connect(database_server);
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO boxes VALUES (NULL, ?, ?, ?, ?)");
             stmt.setString(1, name);
             stmt.setDouble(2, weight);
@@ -51,7 +61,7 @@ public class BoxManager {
         JsonArrayBuilder boxList = Json.createArrayBuilder();
         try {
             //make connection to db and prepare statement
-            Connection connection = DBConnector.connect();
+            Connection connection = DBConnector.connect(database_server);
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM boxes");
             //execute query
             ResultSet result = stmt.executeQuery();
