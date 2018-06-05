@@ -30,9 +30,13 @@ public class BoxManagerTest {
     private static EJBContainer ejbContainer;
     private static Connection connection;
 
-    public BoxManagerTest() {
-    }
-
+    /**
+     * Setups the test enviroment wirh a test database and ejbcontainer
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws FileNotFoundException
+     * @throws NamingException 
+     */
     @BeforeClass
     public static void setUpClass() throws SQLException, ClassNotFoundException, FileNotFoundException, NamingException {
         //make connection to db server without specific db
@@ -50,6 +54,10 @@ public class BoxManagerTest {
         boxManager.setDatabase_server("kodtest-fortnox-testdb");
     }
 
+    /**
+     * Drops the database after all tests are done and closes connection and ejbContainer
+     * @throws SQLException 
+     */
     @AfterClass
     public static void tearDownClass() throws SQLException {
         Statement stmt = connection.createStatement();
@@ -60,6 +68,10 @@ public class BoxManagerTest {
         ejbContainer.close();
     }
     
+    /**
+     * Empties the boxes table in preparation for the next test
+     * @throws SQLException 
+     */
     @After
     public void tearDown() throws SQLException{
         //clear table for next test
@@ -69,6 +81,7 @@ public class BoxManagerTest {
 
     /**
      * Test of postBox method, of class BoxManager.
+     * Posts a box and asserts that the box is in the database
      */
     @Test
     public void testPostBox() throws Exception {
@@ -92,6 +105,7 @@ public class BoxManagerTest {
 
     /**
      * Test of listBoxes method, of class BoxManager.
+     * Posts 4 boxes and asserts that 4 boxes were returned with boxManager.listBoxes()
      */
     @Test
     public void testListBoxes() throws Exception {

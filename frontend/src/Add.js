@@ -12,7 +12,7 @@ class Add extends Component {
     postBox(data) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/backend/api/addbox",
+            url: "http://94.46.140.3:8080/boxinator/api/addbox",
             headers: {"Content-Type": "application/json"},
             dataType: "json",
             data: JSON.stringify(data),

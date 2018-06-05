@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://milo.te4.nu/boxinator",
   "dependencies": {
     "node-sass-chokidar": "^1.3.0",
     "react": "^16.4.0",
@@ -11,8 +12,6 @@
     "jquery": "latest"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

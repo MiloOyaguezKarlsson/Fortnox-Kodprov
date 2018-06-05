@@ -13,7 +13,7 @@ class List extends Component {
     }
 
     getBoxes() {
-        $.get("http://localhost:8080/backend/api/listboxes",
+        $.get("http://94.46.140.3:8080/boxinator/api/listboxes",
             data => {
                 this.setState({boxes: data});
             });
