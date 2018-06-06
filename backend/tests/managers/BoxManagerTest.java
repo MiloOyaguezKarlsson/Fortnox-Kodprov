@@ -20,10 +20,6 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.*;
 import utilities.DBConnector;
 
-/**
- *
- * @author milooyaguez karlsson
- */
 public class BoxManagerTest {
 
     private static BoxManager boxManager;
@@ -31,7 +27,7 @@ public class BoxManagerTest {
     private static Connection connection;
 
     /**
-     * Setups the test enviroment wirh a test database and ejbcontainer
+     * Sets up the test enviroment with a test database and ejbcontainer
      * @throws SQLException
      * @throws ClassNotFoundException
      * @throws FileNotFoundException
@@ -42,7 +38,7 @@ public class BoxManagerTest {
         //make connection to db server without specific db
         connection = DBConnector.connect("");
         //todo ändra filens sökväg (ligger under utilities paketet)
-        String sqlPath = "C:\\TE4\\Fortnox-Kodprov\\backend\\src\\utilities\\kodtest-fortnox-testdb.sql";
+        String sqlPath = config.Config.TEST_SQL_PATH;
         Reader reader = new BufferedReader(new FileReader(sqlPath));
         ScriptRunner scriptRunner = new ScriptRunner(connection);
         scriptRunner.runScript(reader);
